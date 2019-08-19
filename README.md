@@ -22,6 +22,9 @@ The right subtree of a node contains only nodes with keys greater than the node'
 Both the left and right subtrees must also be binary search trees.
 
 
+### Solution:
+
+
 ```
 /**
  * Definition for a binary tree node.
@@ -56,3 +59,7 @@ class Solution {
     }
 }
 ```
+
+
+### Mistake:
+- forgot that the largest value in left subtree should be also larger than root value.(same as right side).
