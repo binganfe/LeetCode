@@ -3,6 +3,7 @@ LeetCode review
 
 # DFS
 
+
 ## 98. Validate Binary Search Tree
 
 
@@ -63,3 +64,6 @@ class Solution {
 
 ### Mistake:
 - forgot that the largest value in left subtree should be also larger than root value.(same as right side).
+
+
+-----
