@@ -275,3 +275,54 @@ class Solution {
 
 
 ---
+
+
+## 106. Construct Binary Tree from Inorder and Postorder Traversal
+
+
+Given inorder and postorder traversal of a tree, construct the binary tree.
+
+
+### Solution:
+
+
+```
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    HashMap<Integer,Integer> index = new HashMap();
+    int _postindex;
+    int[] inorder;
+    int[] postorder;
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if(inorder.length==0){return null;}
+        _postindex = postorder.length-1;
+        this.inorder = inorder;
+        this.postorder = postorder;
+        for(int i=0;i<inorder.length;i++){
+            index.put(inorder[i],i);
+        }
+        return helper(0,inorder.length);
+    }
+    
+    public TreeNode helper(int instart, int inend){
+        if(instart==inend){return null;}
+        TreeNode root = new TreeNode(postorder[_postindex]);
+        int i = index.get(postorder[_postindex]);
+        _postindex--;
+        root.right = helper(i+1,inend);
+        root.left = helper(instart,i);
+        return root;
+    }
+}
+```
+
+
+---
